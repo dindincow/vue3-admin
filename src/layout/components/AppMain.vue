@@ -16,5 +16,3 @@ import {} from 'vue'
   box-sizing: border-box;
 }
 </style>
-
-

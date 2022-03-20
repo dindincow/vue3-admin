@@ -45,6 +45,3 @@ console.log('variables===>', variables)
   width: calc(100% - #{$sideBarWidth});
 }
 </style>
-
-
-
