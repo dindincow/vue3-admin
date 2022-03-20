@@ -1,8 +1,5 @@
 <template>
-  <div class="app-main">
-    app-main
-    <router-view></router-view>
-  </div>
+  <div class="app-main">AppMain</div>
 </template>
 
 <script setup>
@@ -19,4 +16,5 @@ import {} from 'vue'
   box-sizing: border-box;
 }
 </style>
+
 
