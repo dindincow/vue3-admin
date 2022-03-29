@@ -17,12 +17,16 @@ const getChildrenRoutes = (routes) => {
  * @param {*} routes router.getRoutes()
  */
 export const filterRouters = (routes) => {
+  // 獲取全部子路由
   const childrenRoutes = getChildrenRoutes(routes)
-  return routes.filter((route) => {
+  console.log('全部子路由===>', childrenRoutes)
+  const noRepeatRouter = routes.filter((route) => {
     return !childrenRoutes.find((childrenRoute) => {
       return childrenRoute.path === route.path
     })
   })
+  console.log('noRepeatRouter==>', noRepeatRouter)
+  return noRepeatRouter
 }
 
 /**
@@ -35,7 +39,7 @@ function isNull(data) {
   return false
 }
 /**
- * 根据 routes 数据，返回对应 menu 规则数组
+ * 根据 routes 数据，返回对应 menu(有結構化的) 规则数组
  */
 export function generateMenus(routes, basePath = '') {
   const result = []
@@ -52,6 +56,7 @@ export function generateMenus(routes, basePath = '') {
     const routePath = path.resolve(basePath, item.path)
     // 路由分离之后，存在同名父路由的情况，需要单独处理
     let route = result.find((item) => item.path === routePath)
+
     if (!route) {
       route = {
         ...item,
