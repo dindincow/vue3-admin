@@ -10,7 +10,6 @@
         <div class="avatar-wrapper">
           <el-avatar
             shape="square"
-            :size="40"
             :src="$store.getters.userInfo.avatar"
           ></el-avatar>
           <i class="el-icon-s-tools"></i>

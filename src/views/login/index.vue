@@ -7,7 +7,8 @@
       ref="loginFormRef"
     >
       <div class="title-container">
-        <h3 class="title">用户登录</h3>
+        <h3 class="title">{{ $t('login.title') }}</h3>
+        <lang-select class="lang-select" effect="light"></lang-select>
       </div>
 
       <el-form-item prop="username">
@@ -48,19 +49,21 @@
         style="width: 100%; margin-bottom: 30px"
         :loading="loading"
         @click="handleLogin"
-        >登录</el-button
+        >{{ $t('login.loginBtn') }}</el-button
       >
+      <div class="tips" v-html="$t('login.desc')"></div>
     </el-form>
   </div>
 </template>
 
 <script setup>
+import { useI18n } from 'vue-i18n'
 import { ref } from 'vue'
 import { useStore } from 'vuex'
 import { validatePassword } from './rules'
-// import { useRouter } from 'vue-router'
 import router from '@/router'
-// const router = useRouter()
+import langSelect from '@/components/LangSelect'
+
 // 表單登入
 const loginForm = ref({
   username: 'super-admin',
@@ -68,9 +71,10 @@ const loginForm = ref({
 })
 
 // 表單驗證
+const i18n = useI18n()
 const loginRules = ref({
   username: [
-    { required: true, trigger: 'blur', message: '使用者名稱不能為空' }
+    { required: true, trigger: 'blur', message: i18n.t('login.usernameRule') }
   ],
   password: [{ validator: validatePassword(), required: true, trigger: 'blur' }]
 })
@@ -153,6 +157,21 @@ $cursor: #fff;
         height: 47px;
         caret-color: $cursor;
       }
+    }
+    .tips{
+      color: #fff;
+      font-size: 14px;
+      line-height: 24px;
+    }
+    .lang-select{
+      position: absolute;
+      top:0;
+      right:0;
+      font-size: 26px;
+      background: #fff;
+      padding: 4px;
+      border-radius: 4px;
+      cursor: pointer;
     }
   }
 
