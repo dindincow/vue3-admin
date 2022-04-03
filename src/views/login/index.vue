@@ -8,7 +8,7 @@
     >
       <div class="title-container">
         <h3 class="title">{{ $t('login.title') }}</h3>
-        <lang-select class="lang-select" effect="light"></lang-select>
+        <LangSelect class="lang-select" effect="light"></LangSelect>
       </div>
 
       <el-form-item prop="username">
@@ -23,11 +23,8 @@
         />
       </el-form-item>
 
-      <el-form-item prop="password">
+       <el-form-item prop="password">
         <span class="svg-container">
-          <!-- <el-icon>
-            <avatar />
-          </el-icon> -->
           <svg-icon icon="password" @click="onChangePwdType"></svg-icon>
         </span>
         <el-input
@@ -62,7 +59,7 @@ import { ref } from 'vue'
 import { useStore } from 'vuex'
 import { validatePassword } from './rules'
 import router from '@/router'
-import langSelect from '@/components/LangSelect'
+import LangSelect from '@/components/LangSelect'
 
 // 表單登入
 const loginForm = ref({
@@ -141,18 +138,22 @@ $cursor: #fff;
       border-radius: 5px;
       color: #454545;
     }
+    ::v-deep .el-input__inner{
+      border-radius: 5px;
+      box-shadow: none;
+    }
 
     ::v-deep .el-input {
       display: inline-block;
       height: 47px;
-      width: 85%;
+      width: 100%;
 
       input {
         background: transparent;
         border: 0px;
         -webkit-appearance: none;
-        border-radius: 0px;
-        padding: 12px 5px 12px 15px;
+        border-radius: 5px;
+        padding: 12px 5px 12px 45px;
         color: $light_gray;
         height: 47px;
         caret-color: $cursor;
@@ -180,6 +181,7 @@ $cursor: #fff;
     color: $dark_gray;
     vertical-align: middle;
     display: inline-block;
+    position: absolute;
   }
 
   .title-container {
