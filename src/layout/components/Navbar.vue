@@ -4,6 +4,8 @@
     <breadcrumb class="breadcrumb-container" />
 
     <div class="right-menu">
+      <HeaderSearch class="right-menu-item hover-effect"></HeaderSearch>
+      <screenfull class="right-menu-item hover-effect" />
       <ThemeSelect class="right-menu-item hover-effect" />
       <lang-select class="right-menu-item hover-effect" />
       <!-- 头像 -->
@@ -18,13 +20,13 @@
         <template #dropdown>
           <el-dropdown-menu class="user-dropdown">
             <router-link to="/">
-              <el-dropdown-item>  {{ $t('navBar.home') }} </el-dropdown-item>
+              <el-dropdown-item> {{ $t('navBar.home') }} </el-dropdown-item>
             </router-link>
             <a target="_blank" href="">
               <el-dropdown-item>{{ $t('navBar.course') }}</el-dropdown-item>
             </a>
             <el-dropdown-item divided @click="logout">
-               {{ $t('navBar.logout') }}
+              {{ $t('navBar.logout') }}
             </el-dropdown-item>
           </el-dropdown-menu>
         </template>
@@ -39,6 +41,9 @@ import Hamburger from '@/components/hamburger'
 import breadcrumb from '@/components/Breadcrumb'
 import LangSelect from '@/components/LangSelect'
 import ThemeSelect from '@/components/ThemeSelect'
+import Screenfull from '@/components/Screenfull'
+import HeaderSearch from '@/components/HeaderSearch'
+
 const store = useStore()
 const logout = () => {
   store.dispatch('user/logout')
